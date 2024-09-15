@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FiChevronRight } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { place_order } from "../store/reducers/orderReducer";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const Shipping = () => {
   const {
     state: { products, price, shipping_fee, items },
@@ -51,7 +52,7 @@ const Shipping = () => {
   return (
     <div>
       <Header />
-      <section className="bg-[url('http://localhost:3000/images/shop.jpg')] h-[250px] mt-6 bg-cover bg-no-repeat relative bg-left">
+      <section className="bg-[url('https://res.cloudinary.com/dhf6xs6sv/image/upload/v1726376426/products/k5g9xz38lfp6fd5ztgys.jpg')] h-[250px] mt-6 bg-cover bg-no-repeat relative bg-left">
         <div className="absolute top-0 left-0 w-full h-full bg-[#2422228a] ">
           <div className="md:w-[80%] sm:w-[90%] h-full w-[85%] mx-auto ">
             <div className="flex justify-center items-center flex-col h-full w-full gap-2 text-white">
@@ -108,7 +109,6 @@ const Shipping = () => {
                             <input
                               value={state.address}
                               onChange={inputHandle}
-                              a
                               type="text"
                               name="address"
                               placeholder="Address"
@@ -271,16 +271,21 @@ const Shipping = () => {
                         <div className="w-5/12 flex justify-end items-center sm:w-full sm:mt-3">
                           <div className="pl-4 sm:pl-0">
                             <h2 className="font-bold text-slate-600">
-                              $
-                              {c.productInfo.price -
-                                Math.floor(
-                                  (c.productInfo.price *
-                                    c.productInfo.discount) /
-                                    100
-                                )}
+                              <div className="flex justify-center items-center">
+                                <FaBangladeshiTakaSign size={14} />
+                                {c.productInfo.price -
+                                  Math.floor(
+                                    (c.productInfo.price *
+                                      c.productInfo.discount) /
+                                      100
+                                  )}
+                              </div>
                             </h2>
                             <h2 className="line-through text-slate-500 font-semibold">
-                              ${c.productInfo.price}
+                              <div className="flex justify-center items-center">
+                                <FaBangladeshiTakaSign size={14} />
+                                {c.productInfo.price}
+                              </div>
                             </h2>
                             <h2 className="text-sm font-bold">
                               -{c.productInfo.discount}% off
@@ -305,15 +310,30 @@ const Shipping = () => {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-medium">Shipping Fee</span>
-                    <span className="font-bold">$ {shipping_fee}</span>
+                    <span className="font-bold">
+                      <div className="flex justify-center items-center">
+                        <FaBangladeshiTakaSign size={14} />
+                        {shipping_fee}
+                      </div>
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-medium"> Total Payment</span>
-                    <span className="font-bold">$ {price}</span>
+                    <span className="font-bold">
+                      <div className="flex justify-center items-center">
+                        <FaBangladeshiTakaSign size={14} />
+                        {price}
+                      </div>
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-medium">Total</span>
-                    <span className="font-bold">$ {price + shipping_fee}</span>
+                    <span className="font-bold">
+                      <div className="flex justify-center items-center">
+                        <FaBangladeshiTakaSign size={14} />
+                        {price + shipping_fee}
+                      </div>
+                    </span>
                   </div>
                   <button
                     onClick={placeOrder}

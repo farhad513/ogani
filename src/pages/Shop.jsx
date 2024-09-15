@@ -15,6 +15,7 @@ import ShopProducts from "../components/Products/ShopProducts";
 import Pagination from "../components/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import {
   product_price_range,
   queryProducts,
@@ -170,8 +171,12 @@ const Shop = () => {
                 />
                 <div>
                   <span>
-                    ${Math.floor(state.values[0])} - $
-                    {Math.floor(state.values[1])}
+                    <div className="flex justify-start items-center">
+                      <FaBangladeshiTakaSign size={16} />
+                      {Math.floor(state.values[0])} -
+                      <FaBangladeshiTakaSign size={16} />
+                      {Math.floor(state.values[1])}
+                    </div>
                   </span>
                 </div>
               </div>

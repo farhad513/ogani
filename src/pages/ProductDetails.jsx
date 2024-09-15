@@ -24,17 +24,19 @@ import {
   add_to_wishlist,
 } from "../store/reducers/cardReducer";
 import { toast } from "react-hot-toast";
-// import images from "../images"
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const ProductDetails = () => {
   const { product, relatedProduct, moreProducts, totalReview } = useSelector(
     (state) => state.home
   );
+  console.log(moreProducts);
   const { userInfo } = useSelector((state) => state.user);
   const { successMessage, errorMessage } = useSelector((state) => state.card);
   const { slug } = useParams();
   const dispatch = useDispatch();
   const [image, setImage] = useState("");
   const [state, setState] = useState("reviews");
+
   const navigate = useNavigate();
   const responsive = {
     superLargeDesktop: {
@@ -154,7 +156,6 @@ const ProductDetails = () => {
       navigate("/login");
     }
   };
-  console.log(product);
   return (
     <div>
       <Header />
@@ -248,22 +249,31 @@ const ProductDetails = () => {
               <div className="text-2xl text-red-500 font-bold flex gap-3">
                 {product.discount ? (
                   <>
-                    <h2 className="line-through ">${product.price}</h2>
+                    <h2 className="line-through ">
+                      <div className="flex justify-center items-center">
+                        <FaBangladeshiTakaSign size={20} />
+                        {product.price}
+                      </div>
+                    </h2>
                     <h2 className="text-green-600">
-                      $
-                      {product.price -
-                        Math.floor(
-                          (product.price * product.discount) / 100
-                        )}{" "}
-                      <span className="text-red-500">
-                        (-{product.discount}%)
-                      </span>
+                      <div className="flex justify-center items-center ">
+                        <FaBangladeshiTakaSign size={20} />
+                        {product.price -
+                          Math.floor((product.price * product.discount) / 100)}
+                        <span className="text-red-500">
+                          (-{product.discount}%)
+                        </span>
+                      </div>
                     </h2>
                   </>
                 ) : (
                   <>
-                    {" "}
-                    <h2>Price : $ {product.price}</h2>
+                    <h2>
+                      Price :
+                      <div className="flex justify-center items-center">
+                        <FaBangladeshiTakaSign /> {product.price}
+                      </div>
+                    </h2>
                   </>
                 )}
               </div>
@@ -407,7 +417,11 @@ const ProductDetails = () => {
                 <div className="flex flex-col border gap-5 p-3 mt-3">
                   {moreProducts.map((p, i) => {
                     return (
-                      <Link key={i} className="block">
+                      <Link
+                        key={i}
+                        to={`/product/details/${p.slug}`}
+                        className="block"
+                      >
                         <div className="relative py-2">
                           <img
                             className="w-full h-[270px]"
@@ -466,7 +480,7 @@ const ProductDetails = () => {
                 {relatedProduct?.map((p, i) => {
                   return (
                     <SwiperSlide key={i}>
-                      <Link className="block">
+                      <Link className="block" to={`/product/details/${p.slug}`}>
                         <div className="relative">
                           <div>
                             <img className="w-full h-full" src={p.images[0]} />
@@ -484,7 +498,10 @@ const ProductDetails = () => {
                           </h2>
                           <div className="flex justify-start items-center gap-5">
                             <h2 className="text-slate-600 font-semibold text-lg">
-                              Price : ${p.price}
+                              <div className="flex justify-center items-center">
+                                <FaBangladeshiTakaSign />
+                                {p.price}
+                              </div>
                             </h2>
                             <div className="flex text-xl">
                               <Ratings ratings={p.rating} />

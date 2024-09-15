@@ -23,6 +23,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(get_products());
   }, []);
+  console.log(products);
   return (
     <div className="w-full">
       <Header />

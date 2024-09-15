@@ -36,7 +36,7 @@ const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const [category, setCategory] = useState("");
   const { pathname } = useLocation();
-  console.log(pathname);
+
   const search = () => {
     navigate(`/product/search?category=${category}&&value=${searchValue}`);
   };
@@ -118,7 +118,6 @@ const Header = () => {
             <div className="md-lg:w-full w-3/12 md-lg:pt-4">
               <div className="flex justify-between items-center">
                 <Link to="/">
-                  
                   <img src={logo} alt="" />
                 </Link>
                 <div>

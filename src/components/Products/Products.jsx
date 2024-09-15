@@ -7,6 +7,7 @@ import "react-multi-carousel/lib/styles.css";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const Products = ({ title, products }) => {
+  // console.log(products)
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -66,7 +67,7 @@ const Products = ({ title, products }) => {
             <div className="flex flex-col justify-start gap-2 " key={i}>
               {p.map((p, i) => (
                 <Link
-                  to="#"
+                  to={`/product/details/${p.slug}`}
                   key={i}
                   className="flex justify-start items-center gap-3"
                 >

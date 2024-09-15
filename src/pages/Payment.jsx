@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Bkash from "../components/Bkash";
 import { useLocation } from "react-router-dom";
 import Stripe from "./Stripe";
-
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const Payment = () => {
   const {
     state: { price, items, orderId },
@@ -127,11 +128,21 @@ const Payment = () => {
                       {items} items and shipping fee alreay included :{" "}
                     </span>{" "}
                     {""}
-                    <span>${price}</span>
+                    <span>
+                      <div className="flex justify-center items-center">
+                        <FaBangladeshiTakaSign size={14} />
+                        {price}
+                      </div>
+                    </span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="font-semibold">Total Amount</span>
-                    <span className="font-bold text-slate-600">$ {price}</span>
+                    <span className="font-bold text-slate-600">
+                      <div className="flex justify-center items-center">
+                        <FaBangladeshiTakaSign size={14} />
+                        {price}
+                      </div>
+                    </span>
                   </div>
                 </div>
               </div>
